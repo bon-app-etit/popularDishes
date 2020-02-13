@@ -1,0 +1,29 @@
+todo:
+
+
+	table:
+		restaurants:  (created and updated and deleted by host)
+			restaurantId:
+			name:
+			
+		dishes:(created and updated and deleted by host/restaurants)
+			dishId:
+			restaurantId: 
+			dishName:
+			NumberOfReviews:
+		
+		reviews: (created by users)
+			reviewId:
+			dishId: 
+			reviewText:
+			userID:
+			numberOfStar:
+			date:
+
+		users: (created and updated and deleted by host)
+			userId:
+			userName:
+			numberOfFriends:
+			numberOfReviews:
+			picURL:
+		
