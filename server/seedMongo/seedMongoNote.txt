@@ -1,0 +1,13 @@
+1. to seed Mongo.. just run:
+
+        'npm run u99' 
+        refer to package.json
+
+2. To check and run Create Index for reviews( reviewId )
+    mongo < mongoDbCheck.scr
+
+3. to check timing:
+    mongo < mongoDbTiming.scr
+
+
+

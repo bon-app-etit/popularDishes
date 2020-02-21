@@ -24,7 +24,19 @@ app.get("/bundle.js", function(req, res) {
   });
 });
 
-app.get("/restaurants", function(req, res) {
+app.get("/restaurants/:id", function(req, res) {
+    
+  // req.body
+  //  - restaurant id
+
+  // return: all reviews
+
+  // in restaurants table:
+    // read restaurants name and Id (READ)
+
+  // in dishes table:
+    // read all Popular Dishes that matched restaurantId (READ)
+
   var params = req.body.id; // body has restaurantId
   db.query(params, (err, results) => {
     if (err) {
@@ -34,26 +46,22 @@ app.get("/restaurants", function(req, res) {
       res.end(JSON.stringify(results));
     }
   });
-
-  // in restaurants table:
-    // read restaurants name and Id (READ)
-
-  // in dishes table:
-    // read all Popular Dishes that matched restaurantId (READ)
 });
 
 
-app.post("/review", function(req, res) {
+app.post("/restaurants/:id/review", function(req, res) {
   var params = req.query; // body has restaurantId
 
   // define the rest. detail
-  // req.json
+  // req.body
   //  - restaurant id :
   //  - dish id:
   //  - text ( review text )
   //  - date
   //  - starRating
   //  - reviewerId
+
+  // return: nothing
 
   // in reviews table:
     // add new review record (CREATE)
@@ -76,13 +84,15 @@ app.post("/review", function(req, res) {
   });
 });
 
-app.delete("/Review", function(req, res) {
+app.delete("/review/:id", function(req, res) {
   var params = req.query; // body has restaurantId
 
   // define the rest. detail
-  // req.json
+  // req.body
   //  - reviewerId
   //  - ReviewItemId
+
+  // return: nothing
 
   // in reviews table:
     // delete new review record (DELETE)
@@ -102,6 +112,30 @@ app.delete("/Review", function(req, res) {
       console.log("success: deleteReview");
       res.sendStatus(200);
     }
+  });
+
+  app.patch("/review/:id", function(req, res) {
+    
+    // req.body
+    //  - restaurant id :
+
+    // return: nothing
+  
+    var params = req.body.id; // body has restaurantId
+    db.updateReview(params, (err, results) => {
+      if (err) {
+        res.status(500);
+        res.end(err);
+      } else {
+        res.end(JSON.stringify(results));
+      }
+    });
+  
+    // in restaurants table:
+      // read restaurants name and Id (READ)
+  
+    // in dishes table:
+      // read all Popular Dishes that matched restaurantId (READ)
   });
 });
 

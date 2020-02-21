@@ -1,0 +1,8 @@
+use seedDB;
+show collections;
+// db.users.find({}, limit=1)
+// db.reviews.find({}, limit=1)
+// db.resta.find({}, limit=1)
+db.reviews.createIndex( { reviewId: 1 } );
+// mongo < mongoDbCheck.scr
+

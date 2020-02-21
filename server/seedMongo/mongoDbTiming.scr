@@ -1,0 +1,22 @@
+use seedDB;
+show collections;
+db.setProfilingLevel(2)
+db.reviews.insert({ "reviewId" : 10000003, "userReview" : "Hello World", "userReviewDate" : "11/19/2019", "userReviewRating" : 5, "userId" : 52636, "dishId": 20000, "restaurantId" : 4000 } );
+
+db.reviews.insert( { "reviewId" : 10000004, "userReview" : "Hello World", "userReviewDate" : "11/19/2019", "userReviewRating" : 5, "userId" : 52636, "dishId": 20000, "restaurantId" : 4000 } );
+
+db.reviews.find( { "reviewId" : 10000003 });
+
+db.reviews.update({"reviewId" : 10000003}, { $set : { "userReview" : "Hello HR " } } );
+
+db.reviews.remove({"reviewId" : 10000003});
+
+db.reviews.remove({"reviewId" : 10000004});
+                            
+db.system.profile.find();
+
+
+// // mongo < mongoDbTiming.scr
+
+
+

@@ -1,0 +1,208 @@
+;rm preSeed/data/*.txt"
+
+> trypost@1.0.0 seed /Users/cnguyen/0000HR/vs_workspace/0000popularDishes/tryDB/seedPost
+> date +%c; node seed/seedRestaurant.js;node seed/seedDish.js;node seed/seedUser.js;node seed/seedRevSmall.js;node seed/seedDishImage.js; date +%c
+
+Wed Feb 19 20:25:08 2020
+inserting success
+succes: restaurant
+/Users/cnguyen/0000HR/vs_workspace/0000popularDishes/tryDB/seedPost/preSeed/data/popularDishes.txt
+COPY "PopularDishes" ("RestaurantId", "DishName", "DishIngredients", "DishCoverPicture", "DishPrice") FROM '/Users/cnguyen/0000HR/vs_workspace/0000popularDishes/tryDB/seedPost/preSeed/data/popularDishes.txt'
+inserting success
+succes: seed dish
+/Users/cnguyen/0000HR/vs_workspace/0000popularDishes/tryDB/seedPost/preSeed/data/users.txt
+COPY "Users" ("UserName", "UserFriendsCount", "AvatarPhoto", "UserReviewsCount") FROM '/Users/cnguyen/0000HR/vs_workspace/0000popularDishes/tryDB/seedPost/preSeed/data/users.txt'
+inserting success
+succes: seed user
+starting seed reviews...
+q0
+succes: seed reviews
+/Users/cnguyen/0000HR/vs_workspace/0000popularDishes/tryDB/seedPost/preSeed/data/dishImageURL.txt
+COPY "DishImageURLs" ("Photo", "DishId", "PhotoDescription") FROM '/Users/cnguyen/0000HR/vs_workspace/0000popularDishes/tryDB/seedPost/preSeed/data/dishImageURL.txt'
+inserting success
+succes: seed dish image url
+Wed Feb 19 20:35:16 2020
+Wed Feb 19 20:25:08 2020
+
+
+ RestaurantId |      RestaurantName       
+--------------+---------------------------
+         4000 | Leora Gardens Restaurant
+         3999 | Stehr Summit Restaurant
+         3998 | Terrell Lake Restaurant
+         3997 | Pfeffer Light Restaurant
+         3996 | Stokes Spring Restaurant
+         3995 | Ines Viaduct Restaurant
+         3994 | Braun Courts Restaurant
+         3993 | Wehner Squares Restaurant
+         3992 | Obie Pike Restaurant
+         3991 | Kris Radial Restaurant
+(10 rows)
+
+ DishId | RestaurantId |       DishName       |                                          DishIngredients                                           |          DishCoverPicture          | DishPrice 
+--------+--------------+----------------------+----------------------------------------------------------------------------------------------------+------------------------------------+-----------
+  20000 |         4000 | Boehm Wells Dish     | Minim eu enim mollit commodo eu aute cupidatat.                                                    | http://lorempixel.com/640/480/food |        38
+  19999 |         4000 | Sheldon Port Dish    | Voluptate excepteur consectetur ut eiusmod adipisicing consequat.                                  | http://lorempixel.com/640/480/food |        29
+  19998 |         4000 | Ara Fords Dish       | Nostrud consectetur nulla excepteur et ut duis magna officia.                                      | http://lorempixel.com/640/480/food |        21
+  19997 |         4000 | Hirthe Common Dish   | Duis exercitation sunt ut ut consectetur sit fugiat pariatur.                                      | http://lorempixel.com/640/480/food |        31
+  19996 |         4000 | Mertz Course Dish    | Laborum proident deserunt officia id mollit irure nisi.                                            | http://lorempixel.com/640/480/food |        30
+  19995 |         3999 | Imani Centers Dish   | Reprehenderit officia in voluptate et magna duis incididunt nisi nisi.                             | http://lorempixel.com/640/480/food |        26
+  19994 |         3999 | Hudson Tunnel Dish   | Nulla eiusmod laboris cillum magna voluptate excepteur.                                            | http://lorempixel.com/640/480/food |        38
+  19993 |         3999 | Daron Gateway Dish   | Ut sunt minim laborum dolore minim proident veniam enim.                                           | http://lorempixel.com/640/480/food |        32
+  19992 |         3999 | Wintheiser Cape Dish | Ipsum minim adipisicing eiusmod culpa irure enim duis proident deserunt dolor.                     | http://lorempixel.com/640/480/food |        36
+  19991 |         3999 | Shane Plaza Dish     | Officia irure excepteur ad consectetur excepteur Lorem ullamco aute est incididunt duis voluptate. | http://lorempixel.com/640/480/food |        32
+(10 rows)
+
+ ReviewId | UserReviewRating | UserReviewDate | UserId 
+----------+------------------+----------------+--------
+ 10000000 |                3 | 2018-02-19     |  42625
+  9999999 |                5 | 2017-06-04     |  48418
+  9999998 |                5 | 2012-06-14     |  85787
+  9999997 |                5 | 2017-03-17     |  24992
+  9999996 |                5 | 2017-10-20     |  73223
+  9999995 |                4 | 2018-12-02     |  23493
+  9999994 |                5 | 2016-08-23     |  16116
+  9999993 |                1 | 2015-09-08     |  39675
+  9999992 |                2 | 2017-07-16     |   4985
+  9999991 |                5 | 2018-09-28     |   4531
+(10 rows)
+
+ UserId |  UserName  | UserFriendsCount |             AvatarPhoto              | UserReviewsCount 
+--------+------------+------------------+--------------------------------------+------------------
+ 100000 | Dimitri M. |              349 | http://lorempixel.com/640/480/people |              118
+  99999 | Dallas C.  |              446 | http://lorempixel.com/640/480/people |              140
+  99998 | Hunter U.  |              182 | http://lorempixel.com/640/480/people |              155
+  99997 | Brielle Z. |              159 | http://lorempixel.com/640/480/people |               16
+  99996 | Justen S.  |              144 | http://lorempixel.com/640/480/people |               21
+  99995 | Brown U.   |               17 | http://lorempixel.com/640/480/people |              199
+  99994 | Kyra X.    |              164 | http://lorempixel.com/640/480/people |              102
+  99993 | Roberto R. |              394 | http://lorempixel.com/640/480/people |               43
+  99992 | Ulises L.  |               40 | http://lorempixel.com/640/480/people |               16
+  99991 | Salma E.   |              234 | http://lorempixel.com/640/480/people |              158
+(10 rows)
+
+               Photo                | DishId |           PhotoDescription           
+------------------------------------+--------+--------------------------------------
+ http://lorempixel.com/640/480/food |  20000 | Consectetur officia duis dolore.
+ http://lorempixel.com/640/480/food |  20000 | Magna ut est non in.
+ http://lorempixel.com/640/480/food |  20000 | Ex non.
+ http://lorempixel.com/640/480/food |  20000 | Nulla cupidatat labore.
+ http://lorempixel.com/640/480/food |  20000 | Cupidatat laboris est.
+ http://lorempixel.com/640/480/food |  20000 | In excepteur.
+ http://lorempixel.com/640/480/food |  19999 | Qui proident sint enim amet.
+ http://lorempixel.com/640/480/food |  19999 | Nulla consequat ut.
+ http://lorempixel.com/640/480/food |  19999 | Duis quis enim do consequat.
+ http://lorempixel.com/640/480/food |  19999 | Commodo ex adipisicing amet ullamco.
+(10 rows)
+
+
+select "ReviewId", "UserReviewRating", "UserReviewDate",  "UserId"  from "DishReviews" where "ReviewId"= 9999990 desc limit 1;
+
+Timing is on.
+ ReviewId | UserReviewRating | UserReviewDate | UserId 
+----------+------------------+----------------+--------
+  9999990 |                5 | 2019-06-28     |    889
+(1 row)
+
+Time: 6.631 ms
+Timing is off.
+
+Timing is on.
+ ReviewId | UserReviewRating | UserReviewDate | UserId 
+----------+------------------+----------------+--------
+        1 |                2 | 2014-01-22     |  75468
+(1 row)
+
+Time: 2.090 ms
+Timing is off.
+congs-MacBook-Pro:seedPost congnguyen$ psql -f checkTiming.sql
+You are now connected to database "test2" as user "congnguyen".
+Timing is on.
+ ReviewId | UserReviewRating | UserReviewDate | UserId 
+----------+------------------+----------------+--------
+        1 |                2 | 2014-01-22     |  75468
+(1 row)
+
+Time: 6.801 ms
+Timing is off.
+congs-MacBook-Pro:seedPost congnguyen$ psql -f checkTiming.sql
+You are now connected to database "test2" as user "congnguyen".
+Timing is on.
+ ReviewId | UserReviewRating | UserReviewDate | UserId 
+----------+------------------+----------------+--------
+        1 |                2 | 2014-01-22     |  75468
+(1 row)
+
+Time: 2.361 ms
+Timing is off.
+congs-MacBook-Pro:seedPost congnguyen$ psql -f checkTiming.sql
+You are now connected to database "test2" as user "congnguyen".
+Timing is on.
+ ReviewId | UserReviewRating | UserReviewDate | UserId 
+----------+------------------+----------------+--------
+        1 |                2 | 2014-01-22     |  75468
+(1 row)
+
+Time: 2.731 ms
+Timing is off.
+congs-MacBook-Pro:seedPost congnguyen$ psql -f checkTiming.sql
+You are now connected to database "test2" as user "congnguyen".
+Timing is on.
+ ReviewId | UserReviewRating | UserReviewDate | UserId 
+----------+------------------+----------------+--------
+        1 |                2 | 2014-01-22     |  75468
+(1 row)
+
+Time: 2.332 ms
+Timing is off.
+
+EXPLAIN
+SELECT
+    *
+FROM
+    address
+WHERE
+    phone = '223664661973';
+CREATE INDEX idx_DishReviews_ReviewId ON "DishReviews"("ReviewId");
+
+
+test2=# CREATE INDEX idx_DishReviews_ReviewId ON "DishReviews"("ReviewId");
+CREATE INDEX
+
+
+
+
+\timing
+select "ReviewId", "UserReviewRating", "UserReviewDate",  "UserId"  from "DishReviews" where "ReviewId"= 1000000  limit 1;
+select "ReviewId", "UserReviewRating", "UserReviewDate",  "UserId"  from "DishReviews" where "ReviewId"= 4000000  limit 1;
+select "ReviewId", "UserReviewRating", "UserReviewDate",  "UserId"  from "DishReviews" where "ReviewId"= 7000000  limit 1;
+select "ReviewId", "UserReviewRating", "UserReviewDate",  "UserId"  from "DishReviews" where "ReviewId"= 9999000  limit 1;
+\timing
+
+Timing is on.
+ ReviewId | UserReviewRating | UserReviewDate | UserId 
+----------+------------------+----------------+--------
+  1000000 |                4 | 2019-10-13     |  39625
+(1 row)
+
+Time: 2.910 ms
+ ReviewId | UserReviewRating | UserReviewDate | UserId 
+----------+------------------+----------------+--------
+  4000000 |                2 | 2014-07-03     |  34675
+(1 row)
+
+Time: 2.199 ms
+ ReviewId | UserReviewRating | UserReviewDate | UserId 
+----------+------------------+----------------+--------
+  7000000 |                1 | 2016-04-19     |   9193
+(1 row)
+
+Time: 0.890 ms
+ ReviewId | UserReviewRating | UserReviewDate | UserId 
+----------+------------------+----------------+--------
+  9999000 |                1 | 2019-10-21     |  70110
+(1 row)
+
+Time: 0.449 ms
+Timing is off.
+

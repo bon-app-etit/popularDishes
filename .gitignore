@@ -1,0 +1,3 @@
+node_modules/
+server/preSeedPostgres/data/
+server/preSeedMongo/data/

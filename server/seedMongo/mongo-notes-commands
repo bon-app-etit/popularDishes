@@ -1,0 +1,170 @@
+
+server/preSeedMongo/data/restaSeedText.json
+data/reviewSeedText5.json"
+
+    "r1": "mongoimport --db seedDB --collection reviews --file server/preSeedMongo/data/reviewSeedText1.json",
+    "r2": "mongoimport --db seedDB --collection reviews --file server/preSeedMongo/data/reviewSeedText2.json",
+    "r3": "mongoimport --db seedDB --collection reviews --file server/preSeedMongo/data/reviewSeedText3.json",
+    "r4": "mongoimport --db seedDB --collection reviews --file server/preSeedMongo/data/reviewSeedText4.json",
+    "r5": "mongoimport --db seedDB --collection reviews --file server/preSeedMongo/data/reviewSeedText5.json",
+    "r6": "mongoimport --db seedDB --collection reviews --file server/preSeedMongo/data/reviewSeedText6.json",
+    "r7": "mongoimport --db seedDB --collection reviews --file server/preSeedMongo/data/reviewSeedText7.json",
+    "r8": "mongoimport --db seedDB --collection reviews --file server/preSeedMongo/data/reviewSeedText8.json",
+    "r9": "mongoimport --db seedDB --collection reviews --file server/preSeedMongo/data/reviewSeedText9.json",
+    "r10": "mongoimport --db seedDB --collection reviews --file server/preSeedMongo/data/reviewSeedText10.json",
+    "r11": "mongoimport --db seedDB --collection reviews --file server/preSeedMongo/data/reviewSeedText11.json",
+    "u1": "mongoimport --db seedDB --collection users --file server/preSeedMongo/data/userSeedText.json",
+    "u2": "mongoimport --db seedDB --collection restaurants --file server/preSeedMongo/data/restaSeedText.json",
+    "u9": "npm run u1; npm run u2",
+
+show dbs;
+use seedDB;
+show collections;
+db.resta.find({"restaurantId" : 2});
+
+db.resta.findOne()
+
+db.inventory.find({"restaurantName" : "Open Water Seafood"}, limit=1)
+db.inventory.find({}, limit=1)
+
+db.users.drop()
+db.reviews.drop()
+
+db.users.find({}, limit=1)
+db.reviews.find({}, limit=1)
+
+db.reviews.createIndex( { reviewId: 1 } );
+db.reviews.dropIndex("reviewId_1");
+db.reviews.getIndexes()
+
+db.resta.find()
+db.users.find()
+db.users.find({"userId":3});
+db.reviews.find()
+db.resta.find({"RestaurantName":"Jaskolski Club Restaurant"});
+
+"restaurantName" : "Open Water Seafood"
+db.users.drop()
+db.resta.drop()
+db.reviews.drop()
+
+db.reviews.find({"reviewId":99990});
+db.reviews.find({"reviewId":9999990}).explain("executionStats")
+                "executionTimeMillis" : 0,
+db.reviews.find({"reviewId":99990}).explain("executionStats")
+                "executionTimeMillis" : 2,
+db.reviews.find({"reviewId":9}).explain("executionStats")
+                "executionTimeMillis" : 0,
+
+db.reviews.find({"reviewId":5000000}).explain("executionStats")
+                "executionTimeMillis" : 67,
+                "executionTimeMillis" : 0,
+
+db.reviews.find({"reviewId":5000500}).explain("executionStats")
+                "executionTimeMillis" : 18,
+                "executionTimeMillis" : 1,
+
+db.resta.find({"RestaurantName":"Nikolas Village Restaurant"})
+"RestaurantName":"Nikolas Village Restau
+rant"
+
+"userId":3
+
+
+
+{
+        reviewId: 10000002,
+        userReview: "Hello World...",
+        userReviewDate: "12/28/2019",
+        userReviewRating: 5,
+        userId: 1,
+        dishId: 1,
+        restaurantId: 1
+      };
+
+db.reviews.insertOne(
+db.reviews.insert( { "reviewId" : 10000001, "userReview" : "Hello World","userReviewDate" : "11/19/2019",      "userReviewRating" : 5,  "userId" : 52636,  "dishId" : 20000,  "restaurantId" : 4000 } ).explain("executionStats");
+db.reviews.find( { "reviewId" : 10000001 });
+db.reviews.insert(
+      { "reviewId" : 10000002, 
+      "userReview" : "Hello World", 
+      "userReviewDate" : "11/19/2019", 
+      "userReviewRating" : 5, 
+      "userId" : 52636, 
+      "dishId" : 20000, 
+      "restaurantId" : 4000 } );
+
+
+      { "reviewId" : 10000001, 
+      "userReview" : "Hello World", 
+      "userReviewDate" : "11/19/2019", 
+      "userReviewRating" : 5, 
+      "userId" : 52636, 
+      "dishId" : 20000, 
+      "restaurantId" : 4000 } ).explain("executionStats");
+
+
+db.reviews.explain().find({"reviewId":5000500});
+
+
+
+db.reviews.explain("executionStats").update({"reviewId" : 899990}, 
+{ $set : { "userReview" : "Hello HR " } } );
+                "executionTimeMillisEstimate" : 0,
+
+db.reviews.explain("executionStats").update({"reviewId" : 990}, 
+{ $set : { "userReview" : "Hello Hello " } } );
+                    "executionTimeMillisEstimate" : 0,
+
+
+db.reviews.explain("executionStats").delete({"reviewId" : 9999999});
+                    executionTimeMillisEstimate" : 0,
+
+db.reviews.explain("executionStats").find({"reviewId" : 7000990});
+                                "executionTimeMillisEstimate" : 0,
+
+
+
+db.reviews.explain("executionStats").remove({"reviewId" : 9999998});
+                            "executionTimeMillisEstimate" : 0,
+
+>>>> to monitor db performance
+> db.setProfilingLevel(2)
+db.reviews.insert(  { "reviewId" : 10000001,        "userReview" : "Hello World",        "use
+rReviewDate" : "11/19/2019",        "userReviewRating" : 5,        "userId" : 52636,        "dishId"
+ : 20000,        "restaurantId" : 4000 } );
+ 
+ db.reviews.insert(       { "reviewId" : 10000002,        "userReview" : "Hello World",        "use
+rReviewDate" : "11/19/2019",        "userReviewRating" : 5,        "userId" : 52636,        "dishId"
+ : 20000,        "restaurantId" : 4000 } );
+> db.reviews.find( { "reviewId" : 10000001 });
+
+> db.getProfilingStatus()
+> db.system.profile.find();
+
+> db.system.profile.find();
+{ "op" : "insert", "ns" : "seedDB.reviews", "command" : { "insert" : "reviews", "ordered" : true, "lsid" : { "id" : UUID("31f730db-cf76-4076-bc08-ee95af584064") }, "$db" : "seedDB" }, "ninserted" : 1, "keysInserted" : 2, "numYield" : 0, "locks" : { "ParallelBatchWriterMode" : { "acquireCount" : { "r" : NumberLong(1) } }, "ReplicationStateTransition" : { "acquireCount" : { "w" : NumberLong(1) } }, "Global" : { "acquireCount" : { "w" : NumberLong(1) } }, "Database" : { "acquireCount" : { "w" : NumberLong(1) } }, "Collection" : { "acquireCount" : { "w" : NumberLong(1) } }, "Mutex" : { "acquireCount" : { "r" : NumberLong(2) } } }, "flowControl" : { "acquireCount" : NumberLong(1) }, "responseLength" : 45, "protocol" : "op_msg", "millis" : 0, "ts" : ISODate("2020-02-19T23:36:28.507Z"), "client" : "127.0.0.1", "appName" : "MongoDB Shell", "allUsers" : [ ], "user" : "" }
+{ "op" : "insert", "ns" : "seedDB.reviews", "command" : { "insert" : "reviews", "ordered" : true, "lsid" : { "id" : UUID("31f730db-cf76-4076-bc08-ee95af584064") }, "$db" : "seedDB" }, "ninserted" : 1, "keysInserted" : 2, "numYield" : 0, "locks" : { "ParallelBatchWriterMode" : { "acquireCount" : { "r" : NumberLong(1) } }, "ReplicationStateTransition" : { "acquireCount" : { "w" : NumberLong(1) } }, "Global" : { "acquireCount" : { "w" : NumberLong(1) } }, "Database" : { "acquireCount" : { "w" : NumberLong(1) } }, "Collection" : { "acquireCount" : { "w" : NumberLong(1) } }, "Mutex" : { "acquireCount" : { "r" : NumberLong(2) } } }, "flowControl" : { "acquireCount" : NumberLong(1) }, "responseLength" : 45, "protocol" : "op_msg", "millis" : 1, "ts" : ISODate("2020-02-19T23:36:48.225Z"), "client" : "127.0.0.1", "appName" : "MongoDB Shell", "allUsers" : [ ], "user" : "" }
+{ "op" : "query", "ns" : "seedDB.reviews", "command" : { "find" : "reviews", "filter" : { "reviewId" : 10000001 }, "lsid" : { "id" : UUID("31f730db-cf76-4076-bc08-ee95af584064") }, "$db" : "seedDB" }, "keysExamined" : 5, "docsExamined" : 5, "cursorExhausted" : true, "numYield" : 0, "nreturned" : 5, "queryHash" : "452DBBA6", "planCacheKey" : "826C80C0", "locks" : { "ReplicationStateTransition" : { "acquireCount" : { "w" : NumberLong(1) } }, "Global" : { "acquireCount" : { "r" : NumberLong(1) } }, "Database" : { "acquireCount" : { "r" : NumberLong(1) } }, "Collection" : { "acquireCount" : { "r" : NumberLong(1) } }, "Mutex" : { "acquireCount" : { "r" : NumberLong(1) } } }, "flowControl" : {  }, "responseLength" : 1013, "protocol" : "op_msg", "millis" : 0, "planSummary" : "IXSCAN { reviewId: 1 }", "execStats" : { "stage" : "FETCH", "nReturned" : 5, "executionTimeMillisEstimate" : 0, "works" : 6, "advanced" : 5, "needTime" : 0, "needYield" : 0, "saveState" : 0, "restoreState" : 0, "isEOF" : 1, "docsExamined" : 5, "alreadyHasObj" : 0, "inputStage" : { "stage" : "IXSCAN", "nReturned" : 5, "executionTimeMillisEstimate" : 0, "works" : 6, "advanced" : 5, "needTime" : 0, "needYield" : 0, "saveState" : 0, "restoreState" : 0, "isEOF" : 1, "keyPattern" : { "reviewId" : 1 }, "indexName" : "reviewId_1", "isMultiKey" : false, "multiKeyPaths" : { "reviewId" : [ ] }, "isUnique" : false, "isSparse" : false, "isPartial" : false, "indexVersion" : 2, "direction" : "forward", "indexBounds" : { "reviewId" : [ "[10000001.0, 10000001.0]" ] }, "keysExamined" : 5, "seeks" : 1, "dupsTested" : 0, "dupsDropped" : 0 } }, "ts" : ISODate("2020-02-19T23:38:08.780Z"), "client" : "127.0.0.1", "appName" : "MongoDB Shell", "allUsers" : [ ], "user" : "" }
+{ "op" : "query", "ns" : "seedDB.system.profile", "command" : { "find" : "system.profile", "filter" : {  }, "lsid" : { "id" : UUID("31f730db-cf76-4076-bc08-ee95af584064") }, "$db" : "seedDB" }, "keysExamined" : 0, "docsExamined" : 3, "cursorExhausted" : true, "numYield" : 0, "nreturned" : 3, "locks" : { "ReplicationStateTransition" : { "acquireCount" : { "w" : NumberLong(1) } }, "Global" : { "acquireCount" : { "r" : NumberLong(1) } }, "Database" : { "acquireCount" : { "r" : NumberLong(1) } }, "Collection" : { "acquireCount" : { "r" : NumberLong(1) } }, "Mutex" : { "acquireCount" : { "r" : NumberLong(1) } } }, "flowControl" : {  }, "responseLength" : 2924, "protocol" : "op_msg", "millis" : 2, "planSummary" : "COLLSCAN", "execStats" : { "stage" : "COLLSCAN", "nReturned" : 3, "executionTimeMillisEstimate" : 0, "works" : 5, "advanced" : 3, "needTime" : 1, "needYield" : 0, "saveState" : 0, "restoreState" : 0, "isEOF" : 1, "direction" : "forward", "docsExamined" : 3 }, "ts" : ISODate("2020-02-19T23:44:00.463Z"), "client" : "127.0.0.1", "appName" : "MongoDB Shell", "allUsers" : [ ], "user" : "" }
+{ "op" : "query", "ns" : "seedDB.system.profile", "command" : { "find" : "system.profile", "filter" : {  }, "lsid" : { "id" : UUID("32f173e9-9b42-4fcc-a5be-b540b668ecb3") }, "$db" : "seedDB" }, "keysExamined" : 0, "docsExamined" : 4, "cursorExhausted" : true, "numYield" : 0, "nreturned" : 4, "locks" : { "ReplicationStateTransition" : { "acquireCount" : { "w" : NumberLong(1) } }, "Global" : { "acquireCount" : { "r" : NumberLong(1) } }, "Database" : { "acquireCount" : { "r" : NumberLong(1) } }, "Collection" : { "acquireCount" : { "r" : NumberLong(1) } }, "Mutex" : { "acquireCount" : { "r" : NumberLong(1) } } }, "flowControl" : {  }, "responseLength" : 3822, "protocol" : "op_msg", "millis" : 0, "planSummary" : "COLLSCAN", "execStats" : { "stage" : "COLLSCAN", "nReturned" : 4, "executionTimeMillisEstimate" : 0, "works" : 6, "advanced" : 4, "needTime" : 1, "needYield" : 0, "saveState" : 0, "restoreState" : 0, "isEOF" : 1, "direction" : "forward", "docsExamined" : 4 }, "ts" : ISODate("2020-02-20T00:20:59.855Z"), "client" : "127.0.0.1", "appName" : "MongoDB Shell", "allUsers" : [ ], "user" : "" }
+{ "op" : "query", "ns" : "seedDB.system.profile", "command" : { "find" : "system.profile", "filter" : {  }, "lsid" : { "id" : UUID("32f173e9-9b42-4fcc-a5be-b540b668ecb3") }, "$db" : "seedDB" }, "keysExamined" : 0, "docsExamined" : 5, "cursorExhausted" : true, "numYield" : 0, "nreturned" : 5, "locks" : { "ReplicationStateTransition" : { "acquireCount" : { "w" : NumberLong(1) } }, "Global" : { "acquireCount" : { "r" : NumberLong(1) } }, "Database" : { "acquireCount" : { "r" : NumberLong(1) } }, "Collection" : { "acquireCount" : { "r" : NumberLong(1) } }, "Mutex" : { "acquireCount" : { "r" : NumberLong(1) } } }, "flowControl" : {  }, "responseLength" : 4720, "protocol" : "op_msg", "millis" : 0, "planSummary" : "COLLSCAN", "execStats" : { "stage" : "COLLSCAN", "nReturned" : 5, "executionTimeMillisEstimate" : 0, "works" : 7, "advanced" : 5, "needTime" : 1, "needYield" : 0, "saveState" : 0, "restoreState" : 0, "isEOF" : 1, "direction" : "forward", "docsExamined" : 5 }, "ts" : ISODate("2020-02-20T00:40:52.438Z"), "client" : "127.0.0.1", "appName" : "MongoDB Shell", "allUsers" : [ ], "user" : "" }
+
+
+
+GET request : dish review:
+      DB operations:
+            - db query of all reviews matching dishId 
+                  each query is < 1ms
+            - how to improve:
+            - option 1:
+                  make reviewId indexed field.
+            - option 2:
+                  in reviews table:
+                        make dishId indexed.
+                        make date indexed.
+            - select * from reviews 
+                  where restaurant.dishId==reviews.dishId sorted by date limit 6.
+
+                  .sort( date = -1)
+                  .limit(6)
