@@ -1,5 +1,8 @@
 const express = require("express");
 
+// Middleware
+var morgan = require('morgan');
+var parser = require('body-parser');
 const path = require("path");
 
 const db = require("./db.js");
@@ -9,6 +12,10 @@ const compression = require("compression");
 const app = express();
 
 const PORT = 3001;
+
+// Logging and parsing
+app.use(morgan('dev'));
+app.use(parser.json());
 
 app.use(express.static(path.join(__dirname, "../client/dist")));
 app.use(compression());
@@ -25,9 +32,11 @@ app.get("/bundle.js", function(req, res) {
 });
 
 app.get("/restaurants/:id", function(req, res) {
+
+  // console.log('this was called');
+  // console.log('req params', req.params.id);
+  // res.sendStatus(200);
     
-  // req.body
-  //  - restaurant id
 
   // return: all reviews
 
@@ -37,31 +46,22 @@ app.get("/restaurants/:id", function(req, res) {
   // in dishes table:
     // read all Popular Dishes that matched restaurantId (READ)
 
-  var params = req.body.id; // body has restaurantId
-  db.query(params, (err, results) => {
+  var params = req.params.id; // body has restaurantId
+  db.queryRestaurant(params, (err, results) => {
     if (err) {
-      res.status(500);
-      res.end(err);
+      console.log('Error in getting popular Dish')
+      res.sendStatus(404);
     } else {
-      res.end(JSON.stringify(results));
+      console.log("success: getting Popular Dish");
+      res.json(results);
     }
   });
 });
 
-
 app.post("/restaurants/:id/review", function(req, res) {
-  var params = req.query; // body has restaurantId
 
-  // define the rest. detail
-  // req.body
-  //  - restaurant id :
-  //  - dish id:
-  //  - text ( review text )
-  //  - date
-  //  - starRating
-  //  - reviewerId
-
-  // return: nothing
+  //console.log('req.body ', req.body);
+  let review = req.body;
 
   // in reviews table:
     // add new review record (CREATE)
@@ -72,70 +72,54 @@ app.post("/restaurants/:id/review", function(req, res) {
   // in dishes tables: done in db.index
     // increment numberOfReviews (UPDATE)
 
-  db.insertReview(params, err => {
+  db.insertReview(review, err => {
     if (err) {
-      // res.status(500);
-      // res.end(err);
-      console.log("err: insertReview");
+      console.log('Error in adding popular Dish')
+      res.sendStatus(404);
     } else {
-      console.log("success: insertReview");
+      console.log("success: inserting Review");
       res.sendStatus(200);
     }
   });
 });
 
-app.delete("/review/:id", function(req, res) {
-  var params = req.query; // body has restaurantId
+app.delete("/restaurants/:id/dish/review/:id", function(req, res) {
 
-  // define the rest. detail
-  // req.body
-  //  - reviewerId
-  //  - ReviewItemId
-
-  // return: nothing
-
-  // in reviews table:
-    // delete new review record (DELETE)
-
-  // in user table:
-    // decrement numberOfReviews (UPDATE)
-
-  // in dishes tables:
-    // decrement numberOfReviews (UPDATE)
-
-  db.deleteReview(params, err => {
+  let reviewId = req.params.id;
+  db.deleteReview(reviewId, err => {
     if (err) {
-      // res.status(500);
-      // res.end(err);
-      console.log("err: deleteReview");
+      console.log('Error in deleting review or review doesn\'t exist')
+      res.sendStatus(404);
     } else {
-      console.log("success: deleteReview");
+      console.log("success: deleting Review");
       res.sendStatus(200);
     }
   });
 
-  app.patch("/review/:id", function(req, res) {
-    
-    // req.body
-    //  - restaurant id :
 
-    // return: nothing
-  
-    var params = req.body.id; // body has restaurantId
-    db.updateReview(params, (err, results) => {
-      if (err) {
-        res.status(500);
-        res.end(err);
-      } else {
-        res.end(JSON.stringify(results));
-      }
-    });
-  
-    // in restaurants table:
-      // read restaurants name and Id (READ)
-  
-    // in dishes table:
-      // read all Popular Dishes that matched restaurantId (READ)
+
+  // res.sendStatus(200);
+
+
+});
+
+app.patch("/restaurants/:id/dish/review/:id", function(req, res) {
+
+  console.log('req params id ', req.params.id);
+  console.log('req.body ', req.body);
+  let params = {
+    reviewId: req.params.id,
+    reviewUpdate: req.body
+  }
+
+  db.updateReview(params, err => {
+    if (err) {
+      console.log('Error in updating Review or no reviews to update')
+      res.sendStatus(404);
+    } else {
+      console.log("success: update Review");
+      res.sendStatus(200);
+    }
   });
 });
 
