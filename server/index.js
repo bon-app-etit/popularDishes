@@ -86,6 +86,9 @@ app.post("/restaurants/:id/review", function(req, res) {
 app.delete("/restaurants/:id/dish/review/:id", function(req, res) {
 
   let reviewId = req.params.id;
+  console.log('here')
+  console.log(reviewId);
+
   db.deleteReview(reviewId, err => {
     if (err) {
       console.log('Error in deleting review or review doesn\'t exist')
@@ -96,21 +99,18 @@ app.delete("/restaurants/:id/dish/review/:id", function(req, res) {
     }
   });
 
-
-
-  // res.sendStatus(200);
-
-
 });
 
 app.patch("/restaurants/:id/dish/review/:id", function(req, res) {
 
-  console.log('req params id ', req.params.id);
-  console.log('req.body ', req.body);
+  // console.log('req params id ', req.params.id);
+  // console.log('req.body ', req.body);
   let params = {
     reviewId: req.params.id,
     reviewUpdate: req.body
   }
+
+  console.log('params, ', params);
 
   db.updateReview(params, err => {
     if (err) {

@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/seedDB", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost/seedDB", { useUnifiedTopology: true, useNewUrlParser: true });
 // mongoose.connect("mongodb://localhost/popularfood", { useNewUrlParser: true });
 
 var db = mongoose.connection;
@@ -44,9 +44,6 @@ var Users = mongoose.model("Users", UserSchema);
 var queryRestaurant = async (params, callback) => {
     try {
       let rest = await Restaurants.find({restaurantId: Number(params)}).limit(1);
-      console.log('--------------------rest--------------------')
-      console.log('rest: ', rest)
-      console.log('--------------------------------------------')
       let popularDishesArr = rest[0].popularDishes;
       var popularDishesReturn = [];
   
@@ -85,11 +82,14 @@ var queryRestaurant = async (params, callback) => {
     callback(null, popularDishesReturn);
   };
 
-var insertReview = (params, callback) => {
+var insertReview = async(params, callback) => {
 
-  Reviews.collection.insertOne(params)
-    .then(() => callback(null))
-    .catch((err) => callback(err));
+  var stat = await Reviews.collection.insertOne(params);
+  if(stat.insertedCount === 0) {
+    callback('error')
+  } else {
+    callback(null)
+  } 
 };
 
 var deleteReview = async(params, callback) => {
