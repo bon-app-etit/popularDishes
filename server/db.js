@@ -82,6 +82,15 @@ var queryRestaurant = async (params, callback) => {
     callback(null, popularDishesReturn);
   };
 
+var queryReview = async (params, callback) => {
+  var stat = await Reviews.find({"reviewId" : Number(params)}).limit(1);
+  if(stat.length === 0) {
+    callback('error');
+  } else {
+    callback(null, stat[0]);
+  }
+}
+
 var insertReview = async(params, callback) => {
 
   var stat = await Reviews.collection.insertOne(params);
@@ -116,6 +125,8 @@ var updateReview = async(params, callback) => {
   }
 }
 
+
+
 // var query = (callback) => {
 //     Restaurants.find(function (err, docs) {
 //         if (err) {
@@ -126,6 +137,7 @@ var updateReview = async(params, callback) => {
 //     })
 // };
 
+module.exports.queryReview = queryReview;
 module.exports.updateReview = updateReview;
 module.exports.queryRestaurant = queryRestaurant;
 module.exports.insertReview = insertReview;

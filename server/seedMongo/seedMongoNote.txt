@@ -11,3 +11,4 @@
 
 
 
+    "pre": "node server/preSeedPostgres/preSeed_rest.js;node server/preSeedPostgres/preSeed_dish.js;node server/preSeedPostgres/preSeed_revSmall.js;node server/preSeedPostgres/preSeed_user.js;node server/preSeedPostgres/preSeed_dishImage.js;",

@@ -1,0 +1,7 @@
+use seedDB;
+db.reviews.createIndex( { reviewId: 1 } );
+db.reviews.createIndex( { dishId: 1 } );
+db.restaurants.createIndex( { restaurantId: 1 } );
+db.users.createIndex( { userId: 1 } );
+// mongo < mongoDbIndex.scr
+

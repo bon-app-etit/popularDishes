@@ -1,0 +1,9 @@
+use seedDB;
+db.restaurants.getIndexes();
+db.reviews.getIndexes();
+db.users.getIndexes();
+db.system.profile.find();
+// // mongo < mongoDbTimingCheck.scr
+
+
+

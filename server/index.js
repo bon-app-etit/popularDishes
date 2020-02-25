@@ -1,3 +1,4 @@
+require('newrelic');
 const express = require("express");
 
 // Middleware
@@ -5,12 +6,10 @@ var morgan = require('morgan');
 var parser = require('body-parser');
 const path = require("path");
 
+
 const db = require("./db.js");
-
 const compression = require("compression");
-
 const app = express();
-
 const PORT = 3001;
 
 // Logging and parsing
@@ -31,20 +30,8 @@ app.get("/bundle.js", function(req, res) {
   });
 });
 
+// GET RESTAURANT AND ALL DISH INFO
 app.get("/restaurants/:id", function(req, res) {
-
-  // console.log('this was called');
-  // console.log('req params', req.params.id);
-  // res.sendStatus(200);
-    
-
-  // return: all reviews
-
-  // in restaurants table:
-    // read restaurants name and Id (READ)
-
-  // in dishes table:
-    // read all Popular Dishes that matched restaurantId (READ)
 
   var params = req.params.id; // body has restaurantId
   db.queryRestaurant(params, (err, results) => {
@@ -57,6 +44,23 @@ app.get("/restaurants/:id", function(req, res) {
     }
   });
 });
+
+// GET REVIEW
+app.get("/restaurants/:id/dish/review/:id", function(req, res) {
+
+  var params = req.params.id;
+  db.queryReview(params, (err, results) => {
+    if (err) {
+      console.log('Error in getting Review')
+      res.sendStatus(404);
+    } else {
+      console.log("success: getting Review");
+      res.json(results);
+    }
+  });
+});
+
+
 
 app.post("/restaurants/:id/review", function(req, res) {
 
